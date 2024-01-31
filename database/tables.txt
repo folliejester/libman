@@ -1,0 +1,334 @@
+--
+-- Database: library
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table admin
+--
+
+CREATE TABLE admin (
+  id number(11) NOT NULL,
+  FullName varchar2(100) DEFAULT NULL,
+  AdminEmail varchar2(120) DEFAULT NULL,
+  UserName varchar2(100) NOT NULL,
+  Password varchar2(100) NOT NULL,
+  updationDate varchar2(20) NOT NULL
+) 
+
+--
+-- Dumping data for table admin
+--
+
+INSERT INTO admin (id, FullName, AdminEmail, UserName, Password, updationDate) VALUES
+(101, 'admin', 'admin@gmail.com', 'admin', '1234', '9-dec-2022');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table tblauthors
+--
+
+CREATE TABLE tblauthors (
+  id number(11) NOT NULL,
+  AuthorName varchar2(159) DEFAULT NULL,
+  creationDate varchar2(20) NULL,
+  UpdationDate varchar2(20) NULL
+)
+
+--
+-- Dumping data for table tblauthors
+--
+
+INSERT INTO tblauthors (id, AuthorName, creationDate, UpdationDate) VALUES
+(65, 'George Orwell', '2022-12-18', '2022-12-18'),
+(66, 'Stephen Hawking', '2022-12-18', NULL),
+(67, 'Barbara W. Tuchman', '2022-12-18', NULL),
+(68, 'Bruno Munari', '2022-12-18', NULL),
+(69, 'Alex Michaelides ', '2022-12-18', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table tblbooks
+--
+
+CREATE TABLE tblbooks (
+  id number(11) NOT NULL,
+  BookName varchar2(255) DEFAULT NULL,
+  CatId number(11) DEFAULT NULL,
+  AuthorId number(11) DEFAULT NULL,
+  ISBNNumber number(11) DEFAULT NULL,
+  BookPrice number(11) DEFAULT NULL,
+  RegDate varchar2(20) NULL,
+  UpdationDate varchar2(20) NULL
+) 
+
+--
+-- Dumping data for table tblbooks
+--
+
+INSERT INTO tblbooks (id, BookName, CatId, AuthorId, ISBNNumber, BookPrice, RegDate, UpdationDate) VALUES
+(45, 'Nineteen Eighty-Four', 55, 65, 1978658, 250, '2022-12-18', '2022-12-18'),
+(46, 'A Brief History of Time', 54, 66, 187968, 500, '2022-12-18', '2022-12-18');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table tblcategory
+--
+
+CREATE TABLE tblcategory (
+  id number(11) NOT NULL,
+  CategoryName varchar2(150) DEFAULT NULL,
+  Status number(1) DEFAULT NULL,
+  CreationDate varchar2(20) NULL,
+  UpdationDate varchar2(20) NULL
+)
+
+--
+-- Dumping data for table tblcategory
+--
+
+INSERT INTO tblcategory (id, CategoryName, Status, CreationDate, UpdationDate) VALUES
+(55, 'Fiction', 1, '2022-12-18',  NULL),
+(54, 'Science', 1, '2022-12-18',  NULL),
+(56, 'History', 1, '2022-12-18',  NULL),
+(57, 'Art', 1, '2022-12-18',  NULL),
+(58, 'Thriller', 1, '2022-12-18',  NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table tblissuedbookdetails
+--
+
+CREATE TABLE tblissuedbookdetails (
+  id number(11) NOT NULL,
+  BookId number(11) DEFAULT NULL,
+  StudentID varchar2(150) DEFAULT NULL,
+  IssuesDate date NULL,
+  ReturnDate date NULL,
+  RetrunStatus number(1) DEFAULT NULL,
+  fine number(11) DEFAULT NULL
+)
+
+--
+-- Dumping data for table tblissuedbookdetails
+--
+
+INSERT INTO tblissuedbookdetails (id, BookId, StudentID, IssuesDate, ReturnDate, RetrunStatus, fine) VALUES
+(81, 47, 'SID022', '2022-12-18', '2022-12-18', 1, 100),
+(82, 46, 'SID022', '2022-12-18', NULL, 0, NULL),
+(83, 48, 'SID022', '2022-12-18',2022-12-18, 1, 120),
+(84, 45, 'SID025', '2022-12-18', NULL, 0, NULL),
+(85, 47, 'SID025', '2022-12-18',2022-12-18, 1, 43),
+(86, 49, 'SID025', '2022-12-18', NULL, 0, NULL),
+(87, 46, 'SID025', '2022-12-18', NULL, 0, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table tblstudents
+--
+
+CREATE TABLE tblstudents (
+  id number(11) NOT NULL,
+  StudentId varchar2(100) DEFAULT NULL,
+  FullName varchar2(120) DEFAULT NULL,
+  EmailId varchar2(120) DEFAULT NULL,
+  MobileNumber char(11) DEFAULT NULL,
+  Password varchar2(120) DEFAULT NULL,
+  Status number(1) DEFAULT NULL,
+  RegDate varchar2(20) NULL,
+  UpdationDate varchar2(20) NULL
+)
+
+--
+-- Dumping data for table tblstudents
+--
+
+INSERT INTO tblstudents (id, StudentId, FullName, EmailId, MobileNumber, Password, Status, RegDate, UpdationDate) VALUES
+(62, 'SID023', 'suren withana', 'suren@gmail.com	', '0774568897', '1234', 1, '2022-12-18', '2022-12-18'),
+(63, 'SID024', 'dilini priyamali', 'dilini@gmail.com', '0724597954', '1234', 1, '2022-12-18', NULL),
+(64, 'SID025', 'dilan kanishka', 'dilan@gmail.com', '0704897564', '1234', 1, '2022-12-18', NULL),
+(65, 'SID026', 'dasun shanaka', 'dasun@gmail.com', '0789584623', '1234', 1, '2022-12-18', NULL),
+(61, 'SID022', 'Kasun dilanka', 'kasun@gmail.com	', '0711234568', '1234', 1, '2022-12-18', NULL);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table admin
+--
+ALTER TABLE admin
+  ADD PRIMARY KEY (id);
+
+--
+-- Indexes for table tblauthors
+--
+ALTER TABLE tblauthors
+  ADD PRIMARY KEY (id);
+
+--
+-- Indexes for table tblbooks
+--
+ALTER TABLE tblbooks
+  ADD PRIMARY KEY (id);
+
+--
+-- Indexes for table tblcategory
+--
+ALTER TABLE tblcategory
+  ADD PRIMARY KEY (id);
+
+--
+-- Indexes for table tblissuedbookdetails
+--
+ALTER TABLE tblissuedbookdetails
+  ADD PRIMARY KEY (id);
+
+--
+-- Indexes for table tblstudents
+--
+ALTER TABLE tblstudents
+  ADD PRIMARY KEY (id),
+
+ALTER TABLE tblstudents
+ADD CONSTRAINT sid_unique UNIQUE (StudentId)
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table admin
+--
+CREATE SEQUENCE admin_sequence;
+
+
+CREATE OR REPLACE TRIGGER admin_on_insert
+  BEFORE INSERT ON admin
+  FOR EACH ROW
+BEGIN
+  SELECT admin_sequence.nextval
+  INTO :new.id
+  FROM dual;
+END;
+
+
+--
+-- AUTO_INCREMENT for table tblauthors
+--
+CREATE SEQUENCE author_sequence
+
+
+CREATE OR REPLACE TRIGGER tblauthors_on_insert
+  BEFORE INSERT ON tblauthors
+  FOR EACH ROW
+BEGIN
+  SELECT author_sequence.nextval
+  INTO :new.id
+  FROM dual;
+END;
+
+
+--
+-- AUTO_INCREMENT for table tblbooks
+--
+CREATE SEQUENCE book_sequence
+
+
+CREATE OR REPLACE TRIGGER tblbooks_on_insert
+  BEFORE INSERT ON tblbooks
+  FOR EACH ROW
+BEGIN
+  SELECT book_sequence.nextval
+  INTO :new.id
+  FROM dual;
+END;
+
+
+--
+-- AUTO_INCREMENT for table tblcategory
+--
+CREATE SEQUENCE category_sequence
+
+
+CREATE OR REPLACE TRIGGER tblcategory_on_insert
+  BEFORE INSERT ON tblcategory
+  FOR EACH ROW
+BEGIN
+  SELECT category_sequence.nextval
+  INTO :new.id
+  FROM dual;
+END;
+
+--
+-- AUTO_INCREMENT for table tblissuedbookdetails
+--
+CREATE SEQUENCE issuedbook_sequence
+
+
+CREATE OR REPLACE TRIGGER tblissuedbookdetails_on_insert
+  BEFORE INSERT ON tblissuedbookdetails
+  FOR EACH ROW
+BEGIN
+  SELECT issuedbook_sequence.nextval
+  INTO :new.id
+  FROM dual;
+END;
+
+
+--
+-- AUTO_INCREMENT for table tblstudents
+--
+CREATE SEQUENCE student_sequence
+
+
+CREATE OR REPLACE TRIGGER tblstudents_on_insert
+  BEFORE INSERT ON tblstudents
+  FOR EACH ROW
+BEGIN
+  SELECT student_sequence.nextval
+  INTO :new.id
+  FROM dual;
+END;
+
+--Fine calculation
+CREATE OR REPLACE TRIGGER calculate_fine_trigger
+BEFORE UPDATE ON tblissuedbookdetails
+FOR EACH ROW
+WHEN (NEW.return_date IS NOT NULL AND OLD.return_date IS NULL)
+DECLARE
+    -- Constants for fine calculation (you can adjust these values)
+    FINE_RATE_PER_DAY CONSTANT NUMBER := 1; -- Fine rate per day in currency
+    MAX_FINE_AMOUNT CONSTANT NUMBER := 100;  -- Maximum fine amount in currency
+    days_late NUMBER;
+BEGIN
+    -- Calculate the number of days the book is late
+    days_late := ROUND(NEW.returndate - NEW.duedate);
+
+    -- Calculate the fine
+    :NEW.fine := LEAST(days_late * FINE_RATE_PER_DAY, MAX_FINE_AMOUNT);
+
+    -- Update the row with the calculated fine
+    UPDATE book_info
+    SET fine = :NEW.fine
+    WHERE bookid = :NEW.bookid;
+END;
+/
+
+--due date calculation
+CREATE OR REPLACE TRIGGER calculate_due_date_trigger
+BEFORE INSERT ON tblissuedbookdetails
+FOR EACH ROW
+DECLARE
+    -- Constant for the number of days until the due date
+    DAYS_UNTIL_DUE CONSTANT NUMBER := 30; -- Change this value as needed
+BEGIN
+    :NEW.duedate := :NEW.issuesdate + DAYS_UNTIL_DUE;
+END;
+/
